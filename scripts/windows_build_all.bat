@@ -48,7 +48,7 @@ for %%p in (%PlatformTarget%) do (
 	echo "!!!!!!!!!!!! platform %%p"
 	for %%c in (%Configuration%) do (
 		echo "!!!!!!!!!!!! !!!!!!!!!!!! compiling for configuration %%c"
-		call msbuild "%repositoryRoot%workspaces\cinternal_all_vs\cinternal_all.sln" /t:!ActionConfirm! /p:Configuration=%%c /p:Platform=%%p
+		call msbuild "%repositoryRoot%workspacessimple_cpp_bcrypt_all_vs\simple_cpp_bcrypt_all.sln" /t:!ActionConfirm! /p:Configuration=%%c /p:Platform=%%p
 		if not "!ERRORLEVEL!"=="0" (exit /b !ERRORLEVEL!)
 	)
 )

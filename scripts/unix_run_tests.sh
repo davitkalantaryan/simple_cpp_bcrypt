@@ -52,5 +52,5 @@ fi
 
 cd ${repositoryRoot}/sys/${lsbCode}/Debug/test
 
-./lhash_test
-./llist_test
+#./lhash_test
+#./llist_test
