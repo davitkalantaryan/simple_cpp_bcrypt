@@ -10,7 +10,10 @@
 #include <stdio.h>
 
 
-#define PLAIN_PASSWORD	"1f2c87d747cebad1f8854f4e9be3fa79dc272cdbcc275b54a1e661f03ce68b2a"
+//#define PLAIN_PASSWORD	"1f2c87d747cebad1f8854f4e9be3fa79dc272cdbcc275b54a1e661f03ce68b2a"  // correct password
+#define PLAIN_PASSWORD	"1f2c87d747cebad1f8854f4e9be3fa79dc272cdbcc275b54a1e661f03ce68b2a"  // incorrect password
+
+
 #define HASHED_PASSWORD	"$2y$13$em3ZxWrM5LjrZu7tHRKMPetbZfLhR1bQ6GPe470rJeaQxI3QBhTp."
 
 

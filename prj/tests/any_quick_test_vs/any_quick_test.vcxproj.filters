@@ -24,9 +24,15 @@
     <ClCompile Include="..\..\..\src\tests\main_any_quick_test.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\core\simple_cpp_bcrypt_core_bcrypt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\simple_cpp_bcrypt\export_symbols.h">
+      <Filter>Header Files\include\simple_cpp_bcrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\simple_cpp_bcrypt\bcrypt.h">
       <Filter>Header Files\include\simple_cpp_bcrypt</Filter>
     </ClInclude>
   </ItemGroup>

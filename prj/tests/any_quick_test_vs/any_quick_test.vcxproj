@@ -300,9 +300,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\core\simple_cpp_bcrypt_core_bcrypt.c" />
     <ClCompile Include="..\..\..\src\tests\main_any_quick_test.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\simple_cpp_bcrypt\bcrypt.h" />
     <ClInclude Include="..\..\..\include\simple_cpp_bcrypt\export_symbols.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

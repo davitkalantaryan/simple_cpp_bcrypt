@@ -11,12 +11,14 @@
 
 #include <simple_cpp_bcrypt/export_symbols.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 
 CPPUTILS_BEGIN_C
 
 
 SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerify(const char* a_password, const char* a_passwordHash);
+SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerifyRaw(const char* a_password, size_t a_passwordLen, const char* a_passwordHash);
 
 
 CPPUTILS_END_C
