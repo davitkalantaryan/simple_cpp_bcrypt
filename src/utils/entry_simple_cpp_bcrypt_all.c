@@ -1,7 +1,7 @@
 //
 // file:			entry_simple_cpp_bcrypt_all.c
 // path:			src/utils/entry_simple_cpp_bcrypt_all.c
-// created on:		2023 Feb 25
+// created on:		2023 May 08
 // created by:		Davit Kalantaryan (davit.kalantaryan@gmail.com)
 //
 
