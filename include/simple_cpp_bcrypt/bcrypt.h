@@ -17,8 +17,8 @@
 CPPUTILS_BEGIN_C
 
 
-SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerify(const char* a_password, const char* a_passwordHash);
-SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerifyRaw(const char* a_password, size_t a_passwordLen, const char* a_passwordHash);
+SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerify(const char* a_password, const char* a_hash);
+SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerifyRaw(const char* a_password, size_t a_passwordLen, const char* a_hash);
 
 
 CPPUTILS_END_C

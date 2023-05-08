@@ -65,18 +65,18 @@ static void Blowfish_expand0state(struct SBlowfishContext* c, const uint8_t* key
 static void Blowfish_encipher(struct SBlowfishContext* c, uint32_t* xl, uint32_t* xr);
 
 
-SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerify(const char* a_password, const char* a_passwordHash)
+SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerify(const char* a_password, const char* a_hash)
 {
-    return SimpleCppBcryptVerifyRaw(a_password,strlen(a_password),a_passwordHash);
+    return SimpleCppBcryptVerifyRaw(a_password,strlen(a_password), a_hash);
 }
 
 
-SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerifyRaw(const char* a_password, size_t a_passwordLen, const char* a_passwordHash)
+SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerifyRaw(const char* a_password, size_t a_passwordLen, const char* a_hash)
 {
     char got[61] = { 0 };
-	NodeBcrypt(a_password, a_passwordLen, a_passwordHash, &got[0]);
+	NodeBcrypt(a_password, a_passwordLen, a_hash, &got[0]);
     got[60] = 0;
-    return memcmp(a_passwordHash,got,60)==0;
+    return memcmp(a_hash,got,60)==0;
 }
 
 
