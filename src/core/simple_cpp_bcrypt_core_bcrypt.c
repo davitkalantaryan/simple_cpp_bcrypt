@@ -21,6 +21,8 @@
 
 CPPUTILS_BEGIN_C
 
+#define s_unHashBufferSize  (SIMPLE_CPP_BY_CRIPT_MIN_HASH_STR_LEN + 1)
+//static CPPUTILS_CONSTEXPR size_t s_unHashBufferSize = SIMPLE_CPP_BY_CRIPT_MIN_HASH_STR_LEN + 1;
 static const uint8_t Base64Code[] = "./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 static const uint8_t index_64[128] = {
@@ -73,10 +75,10 @@ SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerify(const char* a_password, const cha
 
 SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerifyRaw(const char* a_password, size_t a_passwordLen, const char* a_hash)
 {
-    char got[61] = { 0 };
+    char got[s_unHashBufferSize] = { 0 };
 	NodeBcrypt(a_password, a_passwordLen, a_hash, &got[0]);
-    got[60] = 0;
-    return memcmp(a_hash,got,60)==0;
+    got[SIMPLE_CPP_BY_CRIPT_MIN_HASH_STR_LEN] = 0;
+    return memcmp(a_hash,got,s_unHashBufferSize)==0;
 }
 
 

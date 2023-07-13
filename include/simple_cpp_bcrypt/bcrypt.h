@@ -14,6 +14,8 @@
 #include <stddef.h>
 
 
+#define SIMPLE_CPP_BY_CRIPT_MIN_HASH_STR_LEN    60
+
 CPPUTILS_BEGIN_C
 
 
