@@ -25,7 +25,8 @@ cd ..
 repositoryRoot=`pwd`
 echo repositoryRoot=$repositoryRoot
 
-#cd workspaces/cinternal_all_mkfl
-#unset CPPUTILS_DEBUG
-#make -f cinternal_all.unix.Makefile
-#make -f cinternal_all.unix.Makefile CPPUTILS_DEBUG=1
+cd workspaces/cpputils_all_mkfl
+unset CPPUTILS_DEBUG
+make -f cpputils_all.unix.Makefile CPPUTILS_RELEASE=1
+unset CPPUTILS_RELEASE
+make -f cpputils_all.unix.Makefile CPPUTILS_DEBUG=1

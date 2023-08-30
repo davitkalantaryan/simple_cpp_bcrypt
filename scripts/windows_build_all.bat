@@ -1,4 +1,5 @@
 ::
+:: repository:		simple_cpp_bcrypt
 :: file:			windows_build_all.bat
 :: path:			scripts/windows_build_all.bat
 :: created on:		2023 Feb 03
@@ -20,10 +21,18 @@ set scriptDirectory=%~dp0
 cd /D "%scriptDirectory%.."
 set "repositoryRoot=%cd%\"
 
+if not defined PlatformToolsetVar (
+	set "PlatformToolsetVarMid=%VCToolsVersion:~0,2%"
+	set "PlatformToolsetVarEnd=%VCToolsVersion:~3,1%"
+	set "PlatformToolsetVar=v%PlatformToolsetVarMid%%PlatformToolsetVarEnd%"
+
+	rem todo: get rid of below code
+	set "PlatformToolsetVar=v143"
+	echo PlatformToolsetVar=%PlatformToolsetVar%
+)
+
 
 :: handling arguments
-::set argC=0
-::for %%x in (%*) do Set /A argC+=1
 set nextArg=%scriptName%
 for %%x in (%*) do (
 	if /i "%%x"=="help" (
@@ -42,7 +51,8 @@ for %%x in (%*) do (
 )
 
 echo action=%ActionConfirm%,PlatformTarget=!PlatformTarget!,configuration=%Configuration%
-
+cd "%repositoryRoot%prj\tests\simplecppbcrypt_unit_test_mult"
+if not "!ERRORLEVEL!"=="0" (exit /b !ERRORLEVEL!)
 
 for %%p in (%PlatformTarget%) do (
 	echo "!!!!!!!!!!!! platform %%p"
@@ -50,12 +60,12 @@ for %%p in (%PlatformTarget%) do (
 		echo "!!!!!!!!!!!! !!!!!!!!!!!! compiling for configuration %%c"
 		call msbuild "%repositoryRoot%workspaces\simple_cpp_bcrypt_all_vs\simple_cpp_bcrypt_all.sln" /t:!ActionConfirm! /p:Configuration=%%c /p:Platform=%%p
 		if not "!ERRORLEVEL!"=="0" (exit /b !ERRORLEVEL!)
+		call nmake -f cpputils_unit_test.windows.Makefile /e Platform=%%p /e Configuration=%%c
+		if not "!ERRORLEVEL!"=="0" (exit /b !ERRORLEVEL!)
 	)
 )
 
-
-exit /b %ERRORLEVEL%
-
+exit /b 0
 
 :parse_argument
 	set isNextArgPlatform=true
@@ -65,7 +75,6 @@ exit /b %ERRORLEVEL%
 		if /i not "!nextArg!"=="Build" if /i not "!nextArg!"=="Rebuild" if /i not "!nextArg!"=="Clean" (set isNextArgAction=false)
 		if "!isNextArgAction!"=="true" (set ActionConfirm=!nextArg!) else (
 			set isNextArgConfiguration=true
-			rem if /i not "!nextArg!"=="Debug" if /i not "!nextArg!"=="Release" (set isNextArgConfiguration=false)
 			if /i not "!nextArg:~0,5!"=="Debug" if /i not "!nextArg:~0,7!"=="Release" (set isNextArgConfiguration=false)
 			if "!isNextArgConfiguration!"=="true" (set Configuration=!nextArg!) else (
 				echo Unknown argument !nextArg!.

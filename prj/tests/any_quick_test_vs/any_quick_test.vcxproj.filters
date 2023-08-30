@@ -19,6 +19,9 @@
     <Filter Include="Header Files\include\simple_cpp_bcrypt">
       <UniqueIdentifier>{b5354345-f86e-45c9-93af-9e971f928295}</UniqueIdentifier>
     </Filter>
+    <Filter Include="files">
+      <UniqueIdentifier>{e06391bc-bb41-493f-a1fd-dd37ccb386b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\tests\main_any_quick_test.c">
@@ -35,5 +38,13 @@
     <ClInclude Include="..\..\..\include\simple_cpp_bcrypt\bcrypt.h">
       <Filter>Header Files\include\simple_cpp_bcrypt</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\any_quick_test_mkfl\any_quick_test.unix.Makefile">
+      <Filter>files</Filter>
+    </None>
+    <None Include="..\any_quick_test_qt\any_quick_test.pro">
+      <Filter>files</Filter>
+    </None>
   </ItemGroup>
 </Project>

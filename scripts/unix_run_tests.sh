@@ -50,7 +50,6 @@ elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
 fi
 
 
-# cd ${repositoryRoot}/sys/${lsbCode}/Debug/test
+cd ${repositoryRoot}/sys/${lsbCode}/Debug/test
 
-#./lhash_test
-#./llist_test
+./cpputils_unit_test

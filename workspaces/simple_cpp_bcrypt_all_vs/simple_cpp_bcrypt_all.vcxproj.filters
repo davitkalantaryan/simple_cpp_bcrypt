@@ -37,6 +37,9 @@
     <Filter Include="repo_files\prj\common\common_mkfl\raw">
       <UniqueIdentifier>{904d6d3b-42d5-4247-97c7-5a8944287cae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="files">
+      <UniqueIdentifier>{bad85720-57cf-4d5c-8582-217517f434f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\utils\entry_simple_cpp_bcrypt_all.c">
@@ -109,6 +112,12 @@
     </None>
     <None Include="..\..\prj\common\common_mkfl\raw\flagsandsys_common_raw.windows.Makefile">
       <Filter>repo_files\prj\common\common_mkfl\raw</Filter>
+    </None>
+    <None Include="..\simple_cpp_bcrypt_all_mkfl\simple_cpp_bcrypt_all.unix.Makefile">
+      <Filter>files</Filter>
+    </None>
+    <None Include="..\simple_cpp_bcrypt_all_qt\simple_cpp_bcrypt_all.pro">
+      <Filter>files</Filter>
     </None>
   </ItemGroup>
 </Project>

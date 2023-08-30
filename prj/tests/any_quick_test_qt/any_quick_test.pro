@@ -24,14 +24,13 @@ win32{
 }
 
 
-SOURCES	+=		\
-	"$${PWD}/../../../src/tests/main_any_quick_test.cpp"			\
-	"$${PWD}/../../../src/core/cpputils_bigint.cpp"				\
-	"$${PWD}/../../../src/core/cpputils_functional_old.cpp"			\
-	"$${PWD}/../../../src/core/cpputils_hashtbl.cpp"			\
-	"$${PWD}/../../../src/core/cpputils_inscopecleaner.cpp"
+SOURCES	+= $$files($${simpleCppBcryptRepositoryRoot}/src/core/*.c)
 
-HEADERS += $$files($${cpputilsRepoRoot}/include/*.h,true)
-HEADERS += $$files($${cpputilsRepoRoot}/include/*.hpp,true)
+
+SOURCES	+=		\
+        "$${PWD}/../../../src/tests/main_any_quick_test.c"
+
+HEADERS += $$files($${simpleCppBcryptRepositoryRoot}/include/*.h,true)
+HEADERS += $$files($${simpleCppBcryptRepositoryRoot}/include/*.hpp,true)
 
 OTHER_FILES += $$files($${PWD}/../any_quick_test_mkfl/*.Makefile,false)
