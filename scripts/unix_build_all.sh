@@ -25,8 +25,8 @@ cd ..
 repositoryRoot=`pwd`
 echo repositoryRoot=$repositoryRoot
 
-cd workspaces/cpputils_all_mkfl
+cd workspaces/simple_cpp_bcrypt_all_mkfl
 unset CPPUTILS_DEBUG
-make -f cpputils_all.unix.Makefile CPPUTILS_RELEASE=1
+make -f simple_cpp_bcrypt_all.unix.Makefile CPPUTILS_RELEASE=1
 unset CPPUTILS_RELEASE
-make -f cpputils_all.unix.Makefile CPPUTILS_DEBUG=1
+make -f simple_cpp_bcrypt_all.unix.Makefile CPPUTILS_DEBUG=1
