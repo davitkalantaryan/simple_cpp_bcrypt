@@ -8,7 +8,7 @@
 
 MakeFileName            = simplecppbcrypt_unit_test.windows.Makefile
 MakeFileDir				= $(MAKEDIR)
-TargetName				= cpputils_unit_test_mkfl
+TargetName				= simplecppbcrypt_unit_test_mkfl
 TargetExtension			= exe
 TargetCategory          = test
 SrcBaseDir				= $(MakeFileDir)\..\..\..\src

@@ -1,5 +1,5 @@
 
-targetName=cpputils_unit_test
+targetName=simplecppbcrypt_unit_test
 
 mkfile_path		=  $(abspath $(lastword $(MAKEFILE_LIST)))
 mkfile_dir		=  $(shell dirname $(mkfile_path))
@@ -9,11 +9,11 @@ firstTarget: all
 
 include $(mkfile_dir)/../../common/common_mkfl/flagsandsys_common_private.unix.Makefile
 
-UNIT_TEST_SRCS_DIR=$(cpputilsRepoRoot)/src/tests/unit_test
-CORE_SRCS_DIR=$(cpputilsRepoRoot)/src/core
+UNIT_TEST_SRCS_DIR=$(simpleCppBcryptRepositoryRoot)/src/tests/unit_test
+CORE_SRCS_DIR=$(simpleCppBcryptRepositoryRoot)/src/core
 
 UNIT_TEST_SRCS	= $(shell find $(UNIT_TEST_SRCS_DIR) -name "*.cpp")
-CORE_SRCS	= $(shell find $(CORE_SRCS_DIR) -name "*.cpp")
+CORE_SRCS	= $(shell find $(CORE_SRCS_DIR) -name "*.c")
 
 EXTRA_SOURCSES += $(cinternalRepoRoot)/src/core/cinternal_core_unit_test_checks.c
 EXTRA_SOURCSES += $(cinternalRepoRoot)/src/core/cinternal_core_unit_test_main.c
@@ -38,4 +38,4 @@ $(artifactRoot)/sys/$(lsbCode)/$(Configuration)/test/$(targetName): \
 clean:
 	@rm -rf $(artifactRoot)/sys/$(lsbCode)/$(Configuration)/.objects/$(targetName)
 	@rm -f  $(artifactRoot)/sys/$(lsbCode)/$(Configuration)/test/$(targetName)
-	@echo "  " cleaning of cpputils $(targetName) complete !!!
+	@echo "  " cleaning of $(targetName) complete !!!
