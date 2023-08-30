@@ -1,12 +1,12 @@
 #
-# repo:				cpputils
-# file:				cpputils_unit_test.windows.Makefile
+# repo:				simple_cpp_bcrypt
+# file:				simplecppbcrypt_unit_test.windows.Makefile
 # created on:	    2020 Dec 02
 # created by:		Davit Kalantaryan (davit.kalantaryan@desy.de)
 #
 
 
-MakeFileName            = cpputils_unit_test.windows.Makefile
+MakeFileName            = simplecppbcrypt_unit_test.windows.Makefile
 MakeFileDir				= $(MAKEDIR)
 TargetName				= cpputils_unit_test_mkfl
 TargetExtension			= exe
