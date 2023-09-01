@@ -23,4 +23,8 @@ cinternalRepoRoot	= $(simpleCppBcryptRepositoryRoot)\contrib\cinternal
 !ENDIF
 
 !include <$(cinternalRepoRoot)\prj\common\common_mkfl\flagsandsys_common.windows.Makefile>
+
 CFLAGS				= $(CFLAGS) /I"$(simpleCppBcryptRepositoryRoot)\include"
+
+LFLAGS				= $(LFLAGS) /LIBPATH:"$(simpleCppBcryptRepositoryRoot)\sys\win_$(Platform)\$(Configuration)\lib"
+LFLAGS				= $(LFLAGS) /LIBPATH:"$(simpleCppBcryptRepositoryRoot)\sys\win_$(Platform)\$(Configuration)\tlib"

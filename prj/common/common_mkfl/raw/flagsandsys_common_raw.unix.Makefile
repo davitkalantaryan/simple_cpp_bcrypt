@@ -19,3 +19,6 @@ endif
 include $(simpleCppBcryptRepositoryRoot)/contrib/cinternal/prj/common/common_mkfl/flagsandsys_common.unix.Makefile
 
 COMMON_FLAGS	+= -I$(simpleCppBcryptRepositoryRoot)/include
+
+LIBS	+= -L$(simpleCppBcryptRepositoryRoot)/sys/$(lsbCode)/$(Configuration)/lib
+LIBS	+= -L$(simpleCppBcryptRepositoryRoot)/sys/$(lsbCode)/$(Configuration)/tlib
