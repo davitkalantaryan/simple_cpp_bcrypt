@@ -34,60 +34,81 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\contrib\cinternal\src\core\cinternal_core_logger.c" />
+    <ClCompile Include="..\..\..\contrib\cinternal\src\core\cinternal_core_unit_test_checks.c" />
+    <ClCompile Include="..\..\..\contrib\cinternal\src\core\cinternal_core_unit_test_main.c" />
+    <ClCompile Include="..\..\..\src\core\simple_cpp_bcrypt_core_bcrypt.c" />
+    <ClCompile Include="..\..\..\src\tests\unit_test\0000_initial.cpp" />
+    <ClCompile Include="..\..\..\src\tests\unit_test\0001_check_correct_hashes.cpp" />
+    <ClCompile Include="..\..\..\src\tests\unit_test\0002_check_incorrect_hashes.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="simplecppbcrypt_unit_test.pro" />
+    <None Include="simplecppbcrypt_unit_test.unix.Makefile" />
+    <None Include="simplecppbcrypt_unit_test.windows.Makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\simple_cpp_bcrypt\bcrypt.h" />
+    <ClInclude Include="..\..\..\include\simple_cpp_bcrypt\export_symbols.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
+    <GoogleTestConfiguration Condition="'$(Configuration)'=='Debug'">d</GoogleTestConfiguration>
+    <GoogleTestConfiguration Condition="'$(Configuration)'=='Release'">
+    </GoogleTestConfiguration>
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{43b7115d-c86c-456f-91a0-41c5ede6173a}</ProjectGuid>
-    <RootNamespace>simplecppbcryptall</RootNamespace>
+    <ProjectGuid>{e6f8b6c2-4ca9-4b3a-9a00-83d011de88fa}</ProjectGuid>
+    <RootNamespace>boostgetter</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>$(PlatformToolsetVar)</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>$(PlatformToolsetVar)</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>$(PlatformToolsetVar)</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>$(PlatformToolsetVar)</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>$(PlatformToolsetVar)</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>$(PlatformToolsetVar)</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>$(PlatformToolsetVar)</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>$(PlatformToolsetVar)</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -100,123 +121,126 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\prj\common\common_vs\flagsandsys_common.props" />
+    <Import Project="..\..\common\common_vs\flagsandsys_common_private.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\prj\common\common_vs\flagsandsys_common.props" />
+    <Import Project="..\..\common\common_vs\flagsandsys_common_private.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\prj\common\common_vs\flagsandsys_common.props" />
+    <Import Project="..\..\common\common_vs\flagsandsys_common_private.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\prj\common\common_vs\flagsandsys_common.props" />
+    <Import Project="..\..\common\common_vs\flagsandsys_common_private.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\prj\common\common_vs\flagsandsys_common.props" />
+    <Import Project="..\..\common\common_vs\flagsandsys_common_private.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\prj\common\common_vs\flagsandsys_common.props" />
+    <Import Project="..\..\common\common_vs\flagsandsys_common_private.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\prj\common\common_vs\flagsandsys_common.props" />
+    <Import Project="..\..\common\common_vs\flagsandsys_common_private.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\prj\common\common_vs\flagsandsys_common.props" />
+    <Import Project="..\..\common\common_vs\flagsandsys_common_private.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\util\</OutDir>
-    <IntDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\test\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <IntDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\util\</OutDir>
-    <IntDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\test\</OutDir>
+    <IntDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\util\</OutDir>
-    <IntDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\test\</OutDir>
+    <IntDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\util\</OutDir>
-    <IntDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\test\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <IntDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\util\</OutDir>
-    <IntDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\test\</OutDir>
+    <IntDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\util\</OutDir>
-    <IntDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\test\</OutDir>
+    <IntDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\util\</OutDir>
-    <IntDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\test\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <IntDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\util\</OutDir>
-    <IntDir>$(SimpCppBcrptWorkspaceDir)..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\test\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <IntDir>$(SimpCppBcrptVirtProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.other\objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CINTERNAL_UNIT_TEST_USE_GTEST_LIKE_MACROSES;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>$(OutDir)..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Ws2_32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CINTERNAL_UNIT_TEST_USE_GTEST_LIKE_MACROSES;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>$(OutDir)..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Ws2_32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CINTERNAL_UNIT_TEST_USE_GTEST_LIKE_MACROSES;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>$(OutDir)..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Ws2_32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CINTERNAL_UNIT_TEST_USE_GTEST_LIKE_MACROSES;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -224,14 +248,15 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>$(OutDir)..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Ws2_32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CINTERNAL_UNIT_TEST_USE_GTEST_LIKE_MACROSES;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -239,14 +264,15 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>$(OutDir)..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Ws2_32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <ClCompile>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CINTERNAL_UNIT_TEST_USE_GTEST_LIKE_MACROSES;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -254,25 +280,27 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>$(OutDir)..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Ws2_32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CINTERNAL_UNIT_TEST_USE_GTEST_LIKE_MACROSES;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>$(OutDir)..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Ws2_32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CINTERNAL_UNIT_TEST_USE_GTEST_LIKE_MACROSES;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -280,38 +308,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies />
+      <AdditionalLibraryDirectories>$(OutDir)..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Ws2_32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\src\utils\entry_simple_cpp_bcrypt_all.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\.gitattributes" />
-    <None Include="..\..\.github\workflows\check_merge_to_master_and_develop.yml" />
-    <None Include="..\..\.gitignore" />
-    <None Include="..\..\.gitmodules" />
-    <None Include="..\..\LICENSE" />
-    <None Include="..\..\prj\common\common_mkfl\flagsandsys_common.unix.Makefile" />
-    <None Include="..\..\prj\common\common_mkfl\flagsandsys_common.windows.Makefile" />
-    <None Include="..\..\prj\common\common_mkfl\flagsandsys_common_private.unix.Makefile" />
-    <None Include="..\..\prj\common\common_mkfl\flagsandsys_common_private.windows.Makefile" />
-    <None Include="..\..\prj\common\common_mkfl\raw\flagsandsys_common_private_raw.unix.Makefile" />
-    <None Include="..\..\prj\common\common_mkfl\raw\flagsandsys_common_private_raw.windows.Makefile" />
-    <None Include="..\..\prj\common\common_mkfl\raw\flagsandsys_common_raw.unix.Makefile" />
-    <None Include="..\..\prj\common\common_mkfl\raw\flagsandsys_common_raw.windows.Makefile" />
-    <None Include="..\..\README.md" />
-    <None Include="..\..\scripts\unix_build_all.sh" />
-    <None Include="..\..\scripts\unix_prepare_host.sh" />
-    <None Include="..\..\scripts\unix_prepare_repository.sh" />
-    <None Include="..\..\scripts\unix_run_tests.sh" />
-    <None Include="..\..\scripts\windows_build_all.bat" />
-    <None Include="..\..\scripts\windows_prepare_host.bat" />
-    <None Include="..\..\scripts\windows_prepare_repository.bat" />
-    <None Include="..\..\scripts\windows_run_tests.bat" />
-    <None Include="..\simple_cpp_bcrypt_all_mkfl\simple_cpp_bcrypt_all.unix.Makefile" />
-    <None Include="..\simple_cpp_bcrypt_all_qt\simple_cpp_bcrypt_all.pro" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
