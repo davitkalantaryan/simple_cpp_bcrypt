@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 
 #define BCRYPT_VERSION '2'
@@ -59,12 +60,72 @@ struct SBlowfishContext {
 
 
 static void NodeBcrypt(const char* key, size_t key_len, const char* salt, char* encrypted);
-static void encode_base64(uint8_t* buffer, uint8_t* data, uint16_t len);
+static void encode_base64(uint8_t* buffer, const uint8_t* data, uint16_t len);
 static void decode_base64(uint8_t*, uint16_t, uint8_t*);
 static void Blowfish_initstate(struct SBlowfishContext* c);
 static void Blowfish_expandstate(struct SBlowfishContext* c, const uint8_t* data, uint16_t databytes, const uint8_t* key, uint16_t keybytes);
 static void Blowfish_expand0state(struct SBlowfishContext* c, const uint8_t* key, uint16_t keybytes);
 static void Blowfish_encipher(struct SBlowfishContext* c, uint32_t* xl, uint32_t* xr);
+
+
+static inline void generate_bcrypt_saltInline(uint8_t* a_salt, size_t a_salt_size) {
+    uint8_t raw_salt[16];
+    int i;
+    assert(a_salt_size >= 23);
+    (void)a_salt_size;
+        
+    for(i=0; i<16; ++i){
+        raw_salt[i] = (unsigned char)rand();
+    }
+    encode_base64(a_salt,raw_salt,16);
+    // Ensure the salt is terminated properly
+    a_salt[22] = 0;
+}
+
+
+static inline void format_bcrypt_hashInline(const char* a_salt, int a_cost, char* a_buffer_for_hash, size_t a_buffer_size) {
+    assert(a_buffer_size >= 60);
+    (void)a_buffer_size;
+    snprintf(a_buffer_for_hash, a_buffer_size, "$2y$%02d$%s", a_cost, (const char*)a_salt);
+}
+
+
+SIMPCPPBCRPT_EXPORT void SimpleCppBcryptGenerateSalt(char* a_salt, size_t a_salt_size)
+{
+    generate_bcrypt_saltInline((uint8_t*)a_salt, a_salt_size);
+}
+
+
+SIMPCPPBCRPT_EXPORT void SimpleCppBcryptGenerateHashRaw(const char* a_salt, int a_cost, char* a_buffer_for_hash, size_t a_buffer_size)
+{
+    format_bcrypt_hashInline(a_salt,a_cost,a_buffer_for_hash,a_buffer_size);
+}
+
+
+SIMPCPPBCRPT_EXPORT void SimpleCppBcryptGenerateHash(int a_cost, char* a_buffer_for_hash, size_t a_buffer_size)
+{
+    uint8_t salt[s_unHashBufferSize];
+    generate_bcrypt_saltInline(salt,s_unHashBufferSize);
+    format_bcrypt_hashInline((const char*)salt,a_cost,a_buffer_for_hash,a_buffer_size);
+}
+
+
+SIMPCPPBCRPT_EXPORT void SimpleCppBcryptNodeBcryptRaw(const char* a_key, size_t a_key_len, const char* a_hash, char* a_encrypted)
+{
+    NodeBcrypt(a_key, a_key_len, a_hash, a_encrypted);
+    a_encrypted[SIMPLE_CPP_BY_CRIPT_MIN_HASH_STR_LEN] = 0;
+}
+
+
+SIMPCPPBCRPT_EXPORT void SimpleCppBcryptNodeBcrypt(const char* a_key, size_t a_key_len, int a_cost, char* a_encrypted)
+{
+    uint8_t salt[s_unHashBufferSize];
+    char hash[s_unHashBufferSize];
+    generate_bcrypt_saltInline(salt,s_unHashBufferSize);
+    format_bcrypt_hashInline((const char*)salt,a_cost,hash,s_unHashBufferSize);
+    NodeBcrypt(a_key, a_key_len, hash, a_encrypted);
+    a_encrypted[SIMPLE_CPP_BY_CRIPT_MIN_HASH_STR_LEN] = 0;
+}
 
 
 SIMPCPPBCRPT_EXPORT bool SimpleCppBcryptVerify(const char* a_password, const char* a_hash)
@@ -664,10 +725,10 @@ static void Blowfish_encipher(struct SBlowfishContext* c, uint32_t* xl, uint32_t
 
 
 
-static void encode_base64(uint8_t* buffer, uint8_t* data, uint16_t len)
+static void encode_base64(uint8_t* buffer, const uint8_t* data, uint16_t len)
 {
 	uint8_t* bp = buffer;
-	uint8_t* p = data;
+	const uint8_t* p = data;
 	uint8_t c1, c2;
 	while (p < data + len) {
 		c1 = *p++;
