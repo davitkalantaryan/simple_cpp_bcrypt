@@ -17,17 +17,21 @@ isEmpty(simpleCppBcryptFlagsAndSysCommonIncluded){
 
     isEmpty(artifactRoot) {
         artifactRoot = $$(artifactRoot)
-	        isEmpty(artifactRoot) {
-		        artifactRoot = $${simpleCppBcryptRepositoryRoot}
-		}
+        isEmpty(artifactRoot) {
+            artifactRoot = $${simpleCppBcryptRepositoryRoot}
+        }
     }
 
     include("$${simpleCppBcryptRepositoryRoot}/contrib/cinternal/prj/common/common_qt/flagsandsys_common.pri")
 
     INCLUDEPATH += $${simpleCppBcryptRepositoryRoot}/include
 
-    LIBS	+= -L$${simpleCppBcryptRepositoryRoot}/sys/$${CODENAME}/$$CONFIGURATION/lib
-    LIBS	+= -L$${simpleCppBcryptRepositoryRoot}/sys/$${CODENAME}/$$CONFIGURATION/tlib
+    exists($${simpleCppBcryptRepositoryRoot}/sys/$${CODENAME}/$$CONFIGURATION/lib) {
+        LIBS += -L$${simpleCppBcryptRepositoryRoot}/sys/$${CODENAME}/$$CONFIGURATION/lib
+    }
+    exists($${simpleCppBcryptRepositoryRoot}/sys/$${CODENAME}/$$CONFIGURATION/tlib) {
+        LIBS += -L$${simpleCppBcryptRepositoryRoot}/sys/$${CODENAME}/$$CONFIGURATION/tlib
+    }
 
     OTHER_FILES += $$files($${PWD}/../common_mkfl/*.Makefile,true)
 }
