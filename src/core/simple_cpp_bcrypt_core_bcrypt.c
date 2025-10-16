@@ -84,9 +84,34 @@ static inline void generate_bcrypt_saltInline(uint8_t* a_salt, size_t a_salt_siz
 
 
 static inline void format_bcrypt_hashInline(const char* a_salt, int a_cost, char* a_buffer_for_hash, size_t a_buffer_size) {
-    assert(a_buffer_size >= 60);
-    (void)a_buffer_size;
-    snprintf(a_buffer_for_hash, a_buffer_size, "$2y$%02d$%s", a_cost, (const char*)a_salt);
+    char* bufferToUse = a_buffer_for_hash;
+#ifdef _MSC_VER
+    const size_t needed = (size_t)_scprintf("$2y$%02d$%s", a_cost, a_salt);  // Works even on older MSVC
+#else
+    const size_t needed = (size_t)snprintf(NULL, 0, "$2y$%02d$%s", a_cost, a_salt);
+#endif
+    if(needed>a_buffer_size){
+        fprintf(stderr,"bad buffer size: a_buffer_size[%d] -> needed[%d]\n",(int)a_buffer_size,(int)needed);
+        fflush(stderr);
+        bufferToUse = (char*)malloc(needed);
+        if(!bufferToUse){
+            fprintf(stderr,"Unable allocate buffer for the hash\n");
+            fflush(stderr);
+            exit(1);
+        }  //  if(!bufferToUse){
+    }  //  if(needed>a_buffer_size){
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-truncation"
+#endif
+    snprintf(bufferToUse, needed, "$2y$%02d$%s", a_cost, (const char*)a_salt);
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic pop
+#endif
+    if(needed>a_buffer_size){
+        memcpy(a_buffer_for_hash,bufferToUse,a_buffer_size);
+        free(bufferToUse);
+    }  //  if(needed>a_buffer_size){
 }
 
 
@@ -293,7 +318,7 @@ static void NodeBcrypt(const char* key, size_t key_len, const char* salt, char* 
 		encrypted[i++] = minor;
 	encrypted[i++] = '$';
 
-	snprintf(encrypted + i, 4, "%2.2u$", logr & 0x001F);
+        snprintf(encrypted + i, 5, "%2.2u$", logr & 0x001F);
 
 	encode_base64((uint8_t*)encrypted + i + 3, csalt, BCRYPT_MAXSALT);
 	encode_base64((uint8_t*)encrypted + strlen(encrypted), ciphertext,
