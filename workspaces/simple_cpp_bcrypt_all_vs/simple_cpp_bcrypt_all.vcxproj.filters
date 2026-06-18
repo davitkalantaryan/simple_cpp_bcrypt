@@ -40,6 +40,9 @@
     <Filter Include="files">
       <UniqueIdentifier>{bad85720-57cf-4d5c-8582-217517f434f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="repo_files\prj\common\common_qt">
+      <UniqueIdentifier>{7470af99-249a-45c5-a1b1-54ab209e167c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\utils\entry_simple_cpp_bcrypt_all.c">
@@ -118,6 +121,21 @@
     </None>
     <None Include="..\simple_cpp_bcrypt_all_qt\simple_cpp_bcrypt_all.pro">
       <Filter>files</Filter>
+    </None>
+    <None Include="..\..\scripts\unix_source_per_session.sh">
+      <Filter>repo_files\scripts</Filter>
+    </None>
+    <None Include="..\..\scripts\windows_set_vs_toolset_and_run.bat">
+      <Filter>repo_files\scripts</Filter>
+    </None>
+    <None Include="..\..\scripts\windows_source_per_session.bat">
+      <Filter>repo_files\scripts</Filter>
+    </None>
+    <None Include="..\..\prj\common\common_qt\flagsandsys_common.pri">
+      <Filter>repo_files\prj\common\common_qt</Filter>
+    </None>
+    <None Include="..\..\prj\common\common_qt\flagsandsys_common_private.pri">
+      <Filter>repo_files\prj\common\common_qt</Filter>
     </None>
   </ItemGroup>
 </Project>
