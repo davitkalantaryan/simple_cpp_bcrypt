@@ -300,15 +300,20 @@
     <None Include="..\..\prj\common\common_mkfl\raw\flagsandsys_common_private_raw.windows.Makefile" />
     <None Include="..\..\prj\common\common_mkfl\raw\flagsandsys_common_raw.unix.Makefile" />
     <None Include="..\..\prj\common\common_mkfl\raw\flagsandsys_common_raw.windows.Makefile" />
+    <None Include="..\..\prj\common\common_qt\flagsandsys_common.pri" />
+    <None Include="..\..\prj\common\common_qt\flagsandsys_common_private.pri" />
     <None Include="..\..\README.md" />
     <None Include="..\..\scripts\unix_build_all.sh" />
     <None Include="..\..\scripts\unix_prepare_host.sh" />
     <None Include="..\..\scripts\unix_prepare_repository.sh" />
     <None Include="..\..\scripts\unix_run_tests.sh" />
+    <None Include="..\..\scripts\unix_source_per_session.sh" />
     <None Include="..\..\scripts\windows_build_all.bat" />
     <None Include="..\..\scripts\windows_prepare_host.bat" />
     <None Include="..\..\scripts\windows_prepare_repository.bat" />
     <None Include="..\..\scripts\windows_run_tests.bat" />
+    <None Include="..\..\scripts\windows_set_vs_toolset_and_run.bat" />
+    <None Include="..\..\scripts\windows_source_per_session.bat" />
     <None Include="..\simple_cpp_bcrypt_all_mkfl\simple_cpp_bcrypt_all.unix.Makefile" />
     <None Include="..\simple_cpp_bcrypt_all_qt\simple_cpp_bcrypt_all.pro" />
   </ItemGroup>

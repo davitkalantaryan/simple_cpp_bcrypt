@@ -16,12 +16,10 @@ set "repositoryRoot=%cd%\"
 
 echo "repositoryRoot is %repositoryRoot%"
 
-set "PlatformToolsetVarMid=%VCToolsVersion:~0,2%"
-set "PlatformToolsetVarEnd=%VCToolsVersion:~3,1%"
-set "PlatformToolsetVar=v%PlatformToolsetVarMid%%PlatformToolsetVarEnd%"
+call "%scriptDirectory%windows_source_per_session.bat"
 echo PlatformToolsetVar=%PlatformToolsetVar%
 
 
-devenv workspaces\cinternal_all_vs\cinternal_all.sln
+devenv workspaces\simple_cpp_bcrypt_all_vs\simple_cpp_bcrypt_all.sln
 
 endlocal
